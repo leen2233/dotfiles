@@ -12,7 +12,21 @@ set $right semicolon
 
 # Single and Dual screen 
 
-#exec --no-startup-id xrandr --output HDMI2 --right-of HDMI1 --auto
+exec --no-startup-id xrandr --output VGA-1 --left-of LVDS-1 --auto
+
+set $firstMonitor VGA-1
+set $secondMonitor LVDS-1
+
+workspace 1 output $firstMonitor
+workspace 2 output $firstMonitor
+workspace 3 output $firstMonitor
+workspace 4 output $firstMonitor
+workspace 5 output $firstMonitor
+workspace 6 output $secondMonitor
+workspace 7 output $secondMonitor
+workspace 8 output $secondMonitor
+workspace 9 output $secondMonitor
+workspace 10 output $secondMonitor
 
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
@@ -24,6 +38,11 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
+bindsym $mod+q workspace 6
+bindsym $mod+w workspace 7
+bindsym $mod+e workspace 8
+bindsym $mod+r workspace 9
+bindsym $mod+t workspace 10
 
 bindsym $mod+Shift+1 move container to workspace 1; workspace 1
 bindsym $mod+Shift+2 move container to workspace 2; workspace 2
@@ -53,7 +72,7 @@ mode "$mode_system" {
 }
 
 
-bindsym $mod+Shift+r restart
+bindsym Mod4+Shift+r restart
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+q kill
 
@@ -112,7 +131,6 @@ bindsym $mod+f fullscreen toggle
 
 bindsym $mod+s layout stacking
 bindsym $mod+z layout tabbed
-bindsym $mod+e layout toggle split
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -123,7 +141,7 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-bindsym $mod+r mode "resize"
+bindsym Mod1+shift+r mode "resize"
 
 mode "resize" {
        bindsym Left        resize shrink width 10 px or 10 ppt
@@ -137,7 +155,7 @@ mode "resize" {
 font pango:Noto Mono Regular 13
 
 # Assign applications to workspaces
-# Workspace 1
+assign [class="zen-alpha"] 1
 # Workspace 2 
 # Workspace 3
 # Workspace 4 
@@ -180,9 +198,9 @@ exec xset r rate 500 80
 # System Applications
 exec --no-startup-id xfsettingsd
 exec --no-startup-id xfce4-power-manager &
+
 exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
 exec_always --no-startup-id picom --config ~/.config/i3/picom.conf
-bindsym control+mod1+o exec --no-startup-id ~/.config/i3/scripts/picom-toggle.sh
 
 bindsym $mod+Return exec kitty
 
@@ -190,14 +208,14 @@ bindsym $mod+c exec rofi -show drun -show-icons
 bindsym $mod+shift+a exec -modi window -show window
 bindsym $mod+shift+d exec rofi -modi filebrowser -show filebrowser
 bindsym Mod4+v exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+bindsym Scroll_Lock exec /home/leen/.config/i3/scripts/toggle_lights.sh
+bindsym $mod+shift+f exec /home/leen/.config/i3/scripts/picom_toggle.sh
 
 #catfish
 bindsym control+mod1+c exec --no-startup-id catfish;focus
 
 #pavucontrol
 bindsym control+mod1+u exec --no-startup-id pavucontrol
-
-bindsym $mod+w exec --no-startup-id exo-open --launch webbrowser;focus
 
 #workspace 1 related
 #workspace 2 related
@@ -264,7 +282,6 @@ hide_edge_borders both
 bindsym $mod+shift+b exec --no-startup-id i3-msg border toggle
 
 #super+t in arcolinux is starting terminal
-bindsym $mod+t border normal
 bindsym $mod+y border 1pixel
 bindsym $mod+u border none
 
