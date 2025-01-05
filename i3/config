@@ -12,21 +12,19 @@ set $right semicolon
 
 # Single and Dual screen 
 
-exec --no-startup-id xrandr --output VGA-1 --left-of LVDS-1 --auto
+# set $firstMonitor VGA-1
+# set $secondMonitor LVDS-1
 
-set $firstMonitor VGA-1
-set $secondMonitor LVDS-1
-
-workspace 1 output $firstMonitor
-workspace 2 output $firstMonitor
-workspace 3 output $firstMonitor
-workspace 4 output $firstMonitor
-workspace 5 output $firstMonitor
-workspace 6 output $secondMonitor
-workspace 7 output $secondMonitor
-workspace 8 output $secondMonitor
-workspace 9 output $secondMonitor
-workspace 10 output $secondMonitor
+# workspace 1 output $firstMonitor
+# workspace 2 output $firstMonitor
+# workspace 3 output $firstMonitor
+# workspace 4 output $firstMonitor
+# workspace 5 output $firstMonitor
+# workspace 6 output $secondMonitor
+# workspace 7 output $secondMonitor
+# workspace 8 output $secondMonitor
+# workspace 9 output $secondMonitor
+# workspace 10 output $secondMonitor
 
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
@@ -137,6 +135,7 @@ bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
+bindsym $mod+shift+w sticky toggle
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -203,6 +202,7 @@ exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
 exec_always --no-startup-id picom --config ~/.config/i3/picom.conf
 
 bindsym $mod+Return exec kitty
+bindsym $mod+\ exec systemctl restart v2raya
 
 bindsym $mod+c exec rofi -show drun -show-icons
 bindsym $mod+shift+a exec -modi window -show window
@@ -210,6 +210,8 @@ bindsym $mod+shift+d exec rofi -modi filebrowser -show filebrowser
 bindsym Mod4+v exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 bindsym Scroll_Lock exec /home/leen/.config/i3/scripts/toggle_lights.sh
 bindsym $mod+shift+f exec /home/leen/.config/i3/scripts/picom_toggle.sh
+bindsym $mod+shift+n exec xrandr --output HDMI-A-0 --rotate left 
+bindsym $mod+shift+m exec xrandr --output HDMI-A-0 --rotate normal 
 
 #catfish
 bindsym control+mod1+c exec --no-startup-id catfish;focus
@@ -261,14 +263,16 @@ client.background       #ffffff
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
-bindsym Print exec NOW=$(date +%d-%b-%Y_%H-%M-%S) && maim --format png --select > ~/screenshots/screenshot_$NOW.png && xclip -selection clip -t image/png ~/screenshots/screenshot_$NOW.png
+bindsym Print exec NOW=$(date +%d-%b-%Y_%H-%M-%S) && maim -o --format png --select > ~/screenshots/screenshot_$NOW.png && xclip -selection clip -t image/png ~/screenshots/screenshot_$NOW.png
 
 #https://github.com/acrisci/playerctl/
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 bindsym XF86AudioStop exec --no-startup-id playerctl stop
-bindsym F11 exec --no-startup-id playerctl play-pause
+bindsym F10 exec --no-startup-id playerctl play-pause
+bindsym F11 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
+bindsym F12 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
 
 #backlight
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10 # increase screen brightness
@@ -300,12 +304,11 @@ smart_borders on
 # The middle button toggles floating
 bindsym --whole-window $mod+button2 floating toggle
 
-bindsym --whole-window $mod+Shift+button1 move left
-bindsym --whole-window $mod+Shift+button3 move right
+# bindsym --whole-window $mod+Shift+button1 move left
+# bindsym --whole-window $mod+Shift+button3 move right
 
 bindsym $mod+d exec dmenu_run
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 exec --no-startup-id /usr/lib/gsd-xsettings
 exec --no-startup-id greenclip daemon
-exec --no-startup-id xdman

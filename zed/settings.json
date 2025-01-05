@@ -7,6 +7,13 @@
 // custom settings, run `zed: open default settings` from the
 // command palette
 {
+  "assistant": {
+    "default_model": {
+      "provider": "google",
+      "model": "gemini-1.5-flash"
+    },
+    "version": "2"
+  },
   "telemetry": {
     "diagnostics": false,
     "metrics": false
@@ -22,6 +29,11 @@
       "after_delay": {
         "milliseconds": 500
       }
+    },
+"proxy" : "socks5://127.0.0.1:20170",
+"language_models": {
+    "google": {
+      "low_speed_timeout_in_seconds": 15
     }
-
+  }
 }
