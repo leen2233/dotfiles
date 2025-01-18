@@ -165,6 +165,8 @@ assign [class="zen-alpha"] 1
 # Workspace 9
 # Workspace 10
 
+for_window [class="Pavucontrol"] floating enable
+
 # autostart 
 # USER APPLICATIONS TO START AT BOOT
 #exec --no-startup-id autokey-gtk
