@@ -202,6 +202,7 @@ exec --no-startup-id xfce4-power-manager &
 
 exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
 exec_always --no-startup-id picom --config ~/.config/i3/picom.conf
+exec --no-startup-id dunst
 
 bindsym $mod+Return exec kitty
 bindsym $mod+\ exec systemctl restart v2raya
