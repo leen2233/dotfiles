@@ -1,0 +1,223 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette
+{
+  "icon_theme": "Zed (Default)",
+  "show_edit_predictions": false,
+  "edit_predictions": {
+    "disabled_globs": [],
+    "mode": "eager",
+    "enabled_in_text_threads": true
+  },
+  "ssh_connections": [
+    {
+      "host": "104.238.173.6",
+      "username": "root",
+      "projects": []
+    }
+  ],
+  "features": {
+    "edit_prediction_provider": "zed"
+  },
+  "vim_mode": false,
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  "ui_font_size": 14,
+  "buffer_font_size": 12,
+  "buffer_font_family": "JetBrains Mono",
+  "theme": {
+    "mode": "system",
+    "light": "Gruvbox Dark Hard",
+    "dark": "Gruvbox Dark Hard"
+  },
+  "autosave": {
+    "after_delay": {
+      "milliseconds": 500
+    }
+  },
+  "proxy": "socks5://26.26.26.1:10808",
+  "language_models": {
+    "google": {
+      "low_speed_timeout_in_seconds": 15
+    }
+  },
+  "languages": {
+    "Python": {
+      "language_servers": ["pyright"],
+      "format_on_save": "on",
+      "formatter": [
+        {
+          "code_actions": {
+            "source.fixAll.ruff": true,
+            "source.organizeImports.ruff": true
+          }
+        }
+      ]
+    }
+  },
+  "lsp": {
+    "ruff": {
+      "initialization_options": {
+        "settings": {
+          "lineLength": 120,
+          "lint": {
+            "extendSelect": ["I"]
+          }
+        }
+      }
+    },
+    "pyright": {
+      "settings": {
+        "python": {
+          "pythonPath": "./venv/bin/python"
+        }
+      }
+    }
+  },
+  "git_panel": {
+    "dock": "right"
+  },
+  "file_finder": {
+    "modal_width": "medium"
+  },
+  "centered_layout": {
+    "left_padding": 0.15,
+    "right_padding": 0.15
+  },
+  "agent": {
+    "play_sound_when_agent_done": true,
+    "always_allow_tool_actions": true,
+    "profiles": {
+      "write": {
+        "name": "Write",
+        "tools": {
+          "create_directory": true,
+          "terminal": true,
+          "batch_tool": true,
+          "code_actions": true,
+          "code_symbols": true,
+          "contents": true,
+          "copy_path": true,
+          "create_file": true,
+          "delete_path": false,
+          "diagnostics": true,
+          "edit_file": true,
+          "fetch": true,
+          "list_directory": true,
+          "move_path": true,
+          "now": true,
+          "find_path": true,
+          "read_file": true,
+          "grep": true,
+          "rename": true,
+          "symbol_info": true,
+          "thinking": true,
+          "web_search": true
+        },
+        "enable_all_context_servers": true,
+        "context_servers": {
+          "request": {
+            "tools": {
+              "http_trace": true,
+              "http_put": true,
+              "http_post": true,
+              "http_patch": true,
+              "http_options": true,
+              "http_head": true,
+              "http_get": true,
+              "http_delete": true,
+              "get_stored_response_with_markdown": true,
+              "get_stored_response": true
+            }
+          },
+          "filesystem": {
+            "tools": {
+              "write_file": false,
+              "search_files": false,
+              "read_multiple_files": true,
+              "read_file": false,
+              "move_file": false,
+              "list_directory": false,
+              "list_allowed_directories": false,
+              "get_file_info": false,
+              "edit_file": false,
+              "directory_tree": false,
+              "create_directory": false
+            }
+          }
+        }
+      },
+      "ask": {
+        "name": "Ask",
+        "tools": {
+          "symbol_info": true,
+          "terminal": true,
+          "rename": true,
+          "open": true,
+          "move_path": true,
+          "batch_tool": true,
+          "code_actions": true,
+          "code_symbols": true,
+          "copy_path": true,
+          "create_directory": true,
+          "delete_path": false,
+          "contents": true,
+          "diagnostics": true,
+          "fetch": true,
+          "list_directory": true,
+          "now": true,
+          "find_path": true,
+          "read_file": true,
+          "grep": true,
+          "thinking": true,
+          "web_search": true,
+          "create_file": true
+        },
+        "enable_all_context_servers": false,
+        "context_servers": {}
+      }
+    },
+    "default_profile": "write",
+    "default_model": {
+      "provider": "google",
+      "model": "gemini-2.5-flash"
+    }
+  },
+  "terminal": {
+    "font_family": "JetBrains Mono",
+    "env": {
+      "EDITOR": "zed --wait"
+    }
+  },
+  "file_scan_exclusions": [
+    "**/.git",
+    "**/.svn",
+    "**/.hg",
+    "**/CVS",
+    "**/.DS_Store",
+    "**/Thumbs.db",
+    "**/.classpath",
+    "**/.settings",
+    // above is default from Zed
+    "**/out",
+    "**/dist",
+    "**/.husky",
+    "**/.turbo",
+    "**/.vscode-test",
+    "**/.vscode",
+    "**/.next",
+    "**/.storybook",
+    "**/.tap",
+    "**/.nyc_output",
+    "**/report",
+    "**/node_modules"
+    // "**/venv"
+  ]
+}
