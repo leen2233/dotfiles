@@ -40,10 +40,14 @@ vim.cmd("vnoremap <silent> y y`]")
 vim.cmd("vnoremap <silent> p p`]")
 vim.cmd("nnoremap <silent> p p`]")
 
--- Space + Space to clean search highlight
+-- Space + h to clean search highlight
 vim.keymap.set("n", "<Leader>h", ":noh<CR>", { silent = true })
-vim.keymap.set('n', '<leader>r', ":!pkill -f 'go run .' && go run .<CR>", { noremap = true, silent = false })
+vim.keymap.set("n", "<Leader>k", ":BufferNext<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>j", ":BufferPrevious<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>q", ":BufferClose<CR>", { silent = true })
 
 -- Fixes pasting after visual selection.
 vim.keymap.set("v", "p", '"_dP')
 vim.keymap.set({'i', 'c', 'v', 'n'}, '<C-[>', '<Esc>', { noremap = true, silent = true })
+
+vim.api.nvim_create_user_command("W", "w", {})

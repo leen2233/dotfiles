@@ -22,7 +22,7 @@
     }
   ],
   "features": {
-    "edit_prediction_provider": "zed"
+    "edit_prediction_provider": "copilot"
   },
   "vim_mode": false,
   "telemetry": {
@@ -42,7 +42,7 @@
       "milliseconds": 500
     }
   },
-  "proxy": "socks5://26.26.26.1:10808",
+  "proxy": "socks5://127.0.0.1:20170",
   "language_models": {
     "google": {
       "low_speed_timeout_in_seconds": 15
@@ -92,6 +92,7 @@
     "right_padding": 0.15
   },
   "agent": {
+    "use_modifier_to_send": true,
     "play_sound_when_agent_done": true,
     "always_allow_tool_actions": true,
     "profiles": {
@@ -186,8 +187,8 @@
     },
     "default_profile": "write",
     "default_model": {
-      "provider": "google",
-      "model": "gemini-2.5-flash"
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4"
     }
   },
   "terminal": {
