@@ -1,1 +1,36 @@
-/home/leen/.config/waybar/configs/[TOP] Default
+{
+"include": [
+  "$HOME/.config/waybar/Modules",
+  "$HOME/.config/waybar/ModulesWorkspaces",
+  ],
+"layer": "top",
+//"mode": "dock",
+"exclusive": true,
+"passthrough": false,
+"position": "top",
+"spacing": 3,
+"fixed-center": true,
+"ipc": true,
+"margin-top": 6,
+"margin-left": 10,
+"margin-right": 10,
+"reload_style_on_change": true,
+"modules-left": [
+	"custom/separator#blank",
+	"hyprland/window",
+	],
+
+"modules-center": [
+	"hyprland/workspaces#rw",
+	"clock",
+	],
+
+"modules-right": [
+	"tray",
+	"network#speed",
+	"custom/separator#line",  
+	"pulseaudio",
+	"custom/separator#line",
+	"battery"
+	],
+}

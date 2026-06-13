@@ -1,173 +1,5 @@
-//* ---- 💫 https://github.com/JaKooLit 💫 ---- *//
-/* Waybar Workspaces modules */
-
-/* Generally, this is a potential expanding of choices for hyprland/workspace */
-// HYPRLAND WORKSPACES. CHOOSE as desired and place on waybar configs
-
 {
-// CIRCLES Style
-"hyprland/workspaces": {
-	"active-only": true,
-	"all-outputs": true,
-	"format": "{icon}",
-	"show-special": false,
-	"on-click": "activate",
-	"on-scroll-up": "hyprctl dispatch workspace e+1",
-	"on-scroll-down": "hyprctl dispatch workspace e-1",
-	"persistent-workspaces": {
-		"*": 5
-	},
-	"format-icons": {
-		"active": "",
-		"default": "",
-	},
-},
-// ROMAN Numerals style
-"hyprland/workspaces#roman": {
-	"active-only": false,
-	"all-outputs": true,
-	"format": "{icon}",
-	"show-special": false,
-	"on-click": "activate",
-	"on-scroll-up": "hyprctl dispatch workspace e+1",
-	"on-scroll-down": "hyprctl dispatch workspace e-1",
-    "persistent-workspaces": {
-      "*": 5
-	},
-	"format-icons": {
-		"1": "I",
-		"2": "II",
-		"3": "III",
-		"4": "IV",
-		"5": "V",
-		"6": "VI",
-		"7": "VII",
-		"8": "VIII",
-		"9": "IX",
-		"10": "X",
-	},
-},
-// PACMAN Style
-"hyprland/workspaces#pacman": {
-	"active-only": false,
-	"all-outputs": true,
-	"format": "{icon}",
-	"on-click": "activate",
-	"on-scroll-up": "hyprctl dispatch workspace e+1",
-	"on-scroll-down": "hyprctl dispatch workspace e-1",
-	"show-special": false,
-    "persistent-workspaces": {
-      "*": 5
-	},
-	"format": "{icon}",
-	"format-icons": {
-            "active": "<span font='12'>󰮯</span>",
-            "empty": "<span font='8'></span>",
-            "default": "󰊠",
-	},
-},
-// Kanji / Japanese style
-"hyprland/workspaces#kanji": {
-	"disable-scroll": true,
-	"show-special": false,
-	"all-outputs": true,
-	"format": "{icon}",
-    "persistent-workspaces": {
-      "*": 5
-	},
-	"format-icons": {
-		"1": "一",
-		"2": "二",
-		"3": "三",
-		"4": "四",
-		"5": "五",
-		"6": "六",
-		"7": "七",
-		"8": "八",
-		"9": "九",
-		"10": "十",
-	}
-},
-// for Camilla or Spanish
-"hyprland/workspaces#cam": {
-	"active-only":false,
-	"all-outputs": true,
-	"format": "{icon}",
-	"show-special": false,
-	"on-click": "activate",
-	"on-scroll-up": "hyprctl dispatch workspace e+1",
-	"on-scroll-down": "hyprctl dispatch workspace e-1",
-    "persistent-workspaces": {
-      "*": 5
-	},
-		"format-icons": {
-		"1": "Uno",
-		"2": "Due",
-		"3": "Tre",
-		"4": "Quattro",
-		"5": "Cinque",
-		"6":"Sei",
-		"7":"Sette",
-		"8":"Otto",
-		"9":"Nove",
-		"10":"Dieci"
-	}	
-  },
-  
-//  NUMBERS and ICONS style
-"hyprland/workspaces#4": {
-	"format": "{name}",
-	"format": " {name} {icon} ",
-	//"format": " {icon} ",
-	"show-special": false,
-	"on-click": "activate",
-	"on-scroll-up": "hyprctl dispatch workspace e+1",
-	"on-scroll-down": "hyprctl dispatch workspace e-1",
-	"all-outputs": true,
-	"sort-by-number": true,
-	"format-icons": {
-		"1": " ",
-		"2": " ",
-		"3": " ",
-		"4": " ",
-		"5": " ",
-		"6": " ",
-		"7": "",
-		"8": " ",
-		"9": "",
-		"10": "10",
-		"focused": "",
-		"default": "",
-	},
-},
-// numbers styles
-"hyprland/workspaces#numbers": {
-	"active-only": false,
-	"all-outputs": true,
-	"format": "{icon}",
-	"show-special": false,
-	"on-click": "activate",
-	"on-scroll-up": "hyprctl dispatch workspace e+1",
-	"on-scroll-down": "hyprctl dispatch workspace e-1",
-    "persistent-workspaces": {
-      "*": 5
-	},
-	"format-icons": {
-		"1": "1",
-		"2": "2",
-		"3": "3",
-		"4": "4",
-		"5": "5",
-		"6": "6",
-		"7": "7",
-		"8": "8",
-		"9": "9",
-		"10": "10",
-	},
-},
-
-// NUMBERS and ICONS style with window rewrite 
-"hyprland/workspaces#rw": {
+  "hyprland/workspaces#rw": {
 	"disable-scroll": true,
 	"all-outputs": false,
 	"warp-on-scroll": false,
@@ -183,13 +15,10 @@
 	"format-window-separator": " ",
 	"window-rewrite-default": " ",
 	"window-rewrite": {		
-		"title<.*amazon.*>": " ",
 		"title<.*reddit.*>": " ",
 
-		"class<firefox|org.mozilla.firefox|librewolf|floorp|mercury-browser|[Cc]achy-browser>": " ",
-		"class<zen>": "󰰷 ",
-		"class<waterfox|waterfox-bin>": " ",
-		"class<microsoft-edge>": " ",
+		"class<firefox|org.mozilla.firefox|librewolf|floorp|mercury-browser|zen|[Cc]achy-browser>": " ",
+		"class<app.zen_browser.zen>": "󰰷 ",
 		"class<Chromium|Thorium|[Cc]hrome>": " ",
 		"class<brave-browser>": "🦁 ",
 		"class<tor browser>": " ",
@@ -197,8 +26,6 @@
 
 		"class<kitty|konsole>": " ",
 		"class<kitty-dropterm>": " ",
-		"class<com.mitchellh.ghostty>": " ",
-		"class<org.wezfurlong.wezterm>": " ",
 
 		"class<[Tt]hunderbird|[Tt]hunderbird-esr>": " ",
 		"class<eu.betterbird.Betterbird>": " ",
@@ -243,8 +70,8 @@
 		"class<libreoffice-startcenter>": "󰏆 ",
 		"class<libreoffice-calc>": " ",
 		"title<.*nvim ~.*>": " ",
-		"title<.*vim.*>": " ",
-		"title<.*nvim.*>": " ",
+		"title<.*vim.*>": " ",
+		"title<.*nvim.*>": " ",
 		"title<.*figma.*>": " ",
 		"title<.*jira.*>": " ",
 		"class<jetbrains-idea>": " ",

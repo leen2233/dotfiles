@@ -8,10 +8,13 @@ return {
         mappings = {
           i = { ["<esc>"] = require("telescope.actions").close }, -- close with Esc
         },
+        file_ignore_patterns = {
+          "venv", 
+          ".venv",
+          "__pycache__",
+          "media/"
+        }
       },
-      file_ignore_patterns = {
-        "venv", ".venv"
-      }
     })
 
     -- Keymap: Ctrl+P to search files in project
