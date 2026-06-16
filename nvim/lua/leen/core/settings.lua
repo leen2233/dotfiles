@@ -6,6 +6,7 @@ vim.o.hlsearch = true
 
 -- Make line numbers default
 vim.wo.number = true
+vim.wo.relativenumber = true
 
 -- Enable mouse mode
 vim.o.mouse = "a"
@@ -22,7 +23,7 @@ vim.opt.backup = false
 vim.opt.writebackup = false
 -- Save undo history
 vim.o.undofile = true
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undodir = vim.fn.stdpath("state") .. "/undo"
 
 -- Case-insensitive searching UNLESS \C or capital in search
 vim.o.ignorecase = true
@@ -42,7 +43,7 @@ vim.o.completeopt = "menuone,noselect"
 vim.o.termguicolors = true
 
 -- Don't show modes (insert/visual)
-vim.opt.showmode = false
+vim.opt.showmode = true
 
 -- " Open splits on the right and below
 vim.opt.splitbelow = true
@@ -75,7 +76,7 @@ vim.opt.langmap =
   "ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz"
 
 -- " Start scrolling when we'are 8 lines aways from borders
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 10
 vim.opt.sidescrolloff = 15
 vim.opt.sidescroll = 5
 
@@ -86,6 +87,25 @@ vim.opt.hidden = true
 -- " Add the g flag to search/replace by default
 vim.opt.gdefault = true
 
--- Lazy redraw
-vim.o.lazyredraw = true
+vim.o.cursorline = true
 
+-- enable django template filetype
+vim.filetype.add({
+  pattern = {
+    [".*%.html"] = "htmldjango",
+  },
+})
+
+-- Auto-open nvim-tree on startup
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    require("nvim-tree.api").tree.open()
+  end,
+})
+
+vim.api.nvim_create_autocmd("User", {
+  pattern = "PersistedLoadPost",
+  callback = function()
+    vim.cmd("NvimTreeOpen") -- or Neotree show
+  end,
+})

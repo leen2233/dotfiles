@@ -1,25 +1,20 @@
 return {
   "ahmedkhalf/project.nvim",
   config = function()
+    -- suppress deprecated warning until project.nvim updates
+    local notify = vim.notify
+    vim.notify = function(msg, ...)
+      if msg:match("vim.lsp.buf_get_clients") then
+        return
+      end
+      notify(msg, ...)
+    end
+
     require("project_nvim").setup({
-      manual_mode = false,
-      -- detect project root using lsp/git
-      detection_methods = { "pattern" },
-      patterns = { ".git", "venv", "package.json", "pyproject.toml" },
-
-      scope_chdir = 'global',
+      detection_methods = { "lsp", "pattern" },
+      patterns = { ".git", "package.json", "go.mod", "Cargo.toml" },
     })
 
-    -- optional: integrate with telescope
-    require("telescope").load_extension("projects")
-
-    -- open project picker automatically on startup
-    vim.api.nvim_create_autocmd("VimEnter", {
-      callback = function()
-        if vim.fn.argc() == 0 then
-          require("telescope").extensions.projects.projects()
-        end
-      end,
-    })
+    vim.notify = notify
   end,
 }

@@ -5,7 +5,7 @@ vim.g.maplocalleader = " "
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
 -- Space + s saves the file
-vim.keymap.set("n", "<Leader>s", ":write<CR>", { silent = true })
+vim.keymap.set({"n", "i"}, "<C-s>", "<cmd>w<cr>", { silent = true })
 
 -- Move normally between wrapped lines
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -49,5 +49,8 @@ vim.keymap.set("n", "<Leader>q", ":BufferClose<CR>", { silent = true })
 -- Fixes pasting after visual selection.
 vim.keymap.set("v", "p", '"_dP')
 vim.keymap.set({'i', 'c', 'v', 'n'}, '<C-[>', '<Esc>', { noremap = true, silent = true })
+
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 vim.api.nvim_create_user_command("W", "w", {})
