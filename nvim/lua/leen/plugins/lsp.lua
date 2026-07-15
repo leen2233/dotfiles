@@ -11,6 +11,7 @@ return {
       local mason_tool_installer = require("mason-tool-installer")
 
       mason.setup()
+      enable = true
 
       mason_lspconfig.setup({
         ensure_installed = {

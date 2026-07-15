@@ -1,56 +1,31 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Keymaps for better default experience
-vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
-
--- Space + s saves the file
-vim.keymap.set({"n", "i"}, "<C-s>", "<cmd>w<cr>", { silent = true })
-
--- Move normally between wrapped lines
+vim.keymap.set({"n", "v"}, "<Space>", "<Nop>", { silent = true })
+vim.keymap.set({"n", "i"}, "<C-s>", ":w<cr>", { silent = true })
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
--- Move to first symbol on the line
-vim.keymap.set("n", "H", "^")
+-- Vertical and Horizontal splits
+vim.keymap.set("n", "vv", "<C-w>v")
+vim.keymap.set("n", "ss", "<C-w>s")
+vim.keymap.set({"n", "i"}, "<C-j>", "<C-w>j")
+vim.keymap.set({"n", "i"}, "<C-j>", "<C-w>j")
+vim.keymap.set({"n", "i"}, "<C-h>", "<C-w>h")
+vim.keymap.set({"n", "i"}, "<C-l>", "<C-w>l")
 
--- Move to last symbol of the line
-vim.keymap.set("n", "L", "$")
-
--- Shift + q - Quit
-vim.keymap.set("n", "Q", "<C-W>q")
-
--- vv - Makes vertical split
-vim.keymap.set("n", "vv", "<C-W>v")
--- ss - Makes horizontal split
-vim.keymap.set("n", "ss", "<C-W>s")
-
--- Quick jumping between splits
-vim.keymap.set("n", "<C-j>", "<C-w>j")
-vim.keymap.set("n", "<C-k>", "<C-w>k")
-vim.keymap.set("n", "<C-h>", "<C-w>h")
-vim.keymap.set("n", "<C-l>", "<C-w>l")
-
--- Indenting in visual mode (tab/shift+tab)
 vim.keymap.set("v", "<Tab>", ">gv")
 vim.keymap.set("v", "<S-Tab>", "<gv")
 
--- Move to the end of yanked text after yank and paste
-vim.cmd("vnoremap <silent> y y`]")
-vim.cmd("vnoremap <silent> p p`]")
-vim.cmd("nnoremap <silent> p p`]")
-
--- Space + h to clean search highlight
-vim.keymap.set("n", "<Leader>h", ":noh<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>h", ":noh<cr>", { silent = true })
 vim.keymap.set("n", "<Leader>k", ":BufferNext<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>j", ":BufferPrevious<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>q", ":BufferClose<CR>", { silent = true })
 
--- Fixes pasting after visual selection.
+vim.api.nvim_create_user_command("W", "w", {})
+
+-- Fix paste when visual selected
 vim.keymap.set("v", "p", '"_dP')
-vim.keymap.set({'i', 'c', 'v', 'n'}, '<C-[>', '<Esc>', { noremap = true, silent = true })
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-
-vim.api.nvim_create_user_command("W", "w", {})

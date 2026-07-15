@@ -20,4 +20,3 @@ require("lazy").setup({ { import = "leen.plugins" } }, {
     notify = false,
   },
 })
-
